@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;iolink_device.c&apos; to &apos;Drivers&apos;" description="Move &apos;iolink_device.c&apos; to &apos;Drivers&apos;" destination="Drivers" element1="Debug/Drivers/BSP/IOLink/iolink_device.c" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1714757902521" updateReferences="true"/>
+</session>

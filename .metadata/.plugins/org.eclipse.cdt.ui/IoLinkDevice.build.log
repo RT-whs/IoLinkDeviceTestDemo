@@ -1,0 +1,59 @@
+16:40:18 **** Incremental Build of configuration Debug for project IoLinkDevice ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I"F:/WHS/Projects/2023/PCB_Chapadlo/IO_LINK/Project/sw/nucleo_example/en.stsw-iod003/STSW-IOD003_V1.0.0/Drivers/BSP/STEVAL-IOD003V1" -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I"F:/WHS/Projects/2023/PCB_Chapadlo/IO_LINK/Project/sw/nucleo_example/en.stsw-iod003/STSW-IOD003_V1.0.0/Drivers/BSP/STEVAL-IOD003V1" -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f4xx_hal_msp.d" -MT"Core/Src/stm32f4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I"F:/WHS/Projects/2023/PCB_Chapadlo/IO_LINK/Project/sw/nucleo_example/en.stsw-iod003/STSW-IOD003_V1.0.0/Drivers/BSP/STEVAL-IOD003V1" -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f4xx_it.d" -MT"Core/Src/stm32f4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_it.o"
+../Core/Src/main.c:45:1: error: unknown type name 'ETH_TxPacketConfig'
+   45 | ETH_TxPacketConfig TxConfig;
+      | ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:46:34: error: 'ETH_RX_DESC_CNT' undeclared here (not in a function)
+   46 | ETH_DMADescTypeDef  DMARxDscrTab[ETH_RX_DESC_CNT]; /* Ethernet Rx DMA Descriptors */
+      |                                  ^~~~~~~~~~~~~~~
+../Core/Src/main.c:47:34: error: 'ETH_TX_DESC_CNT' undeclared here (not in a function); did you mean 'ETH_DMATXDESC_CIC'?
+   47 | ETH_DMADescTypeDef  DMATxDscrTab[ETH_TX_DESC_CNT]; /* Ethernet Tx DMA Descriptors */
+      |                                  ^~~~~~~~~~~~~~~
+      |                                  ETH_DMATXDESC_CIC
+../Core/Src/main.c: In function 'MX_ETH_Init':
+../Core/Src/main.c:205:30: error: 'HAL_ETH_RMII_MODE' undeclared (first use in this function); did you mean 'IS_ETH_RX_MODE'?
+  205 |   heth.Init.MediaInterface = HAL_ETH_RMII_MODE;
+      |                              ^~~~~~~~~~~~~~~~~
+      |                              IS_ETH_RX_MODE
+../Core/Src/main.c:205:30: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:206:12: error: 'ETH_InitTypeDef' has no member named 'TxDesc'
+  206 |   heth.Init.TxDesc = DMATxDscrTab;
+      |            ^
+../Core/Src/main.c:207:12: error: 'ETH_InitTypeDef' has no member named 'RxDesc'
+  207 |   heth.Init.RxDesc = DMARxDscrTab;
+      |            ^
+../Core/Src/main.c:208:12: error: 'ETH_InitTypeDef' has no member named 'RxBuffLen'
+  208 |   heth.Init.RxBuffLen = 1524;
+      |            ^
+../Core/Src/main.c:219:32: error: 'ETH_TxPacketConfig' undeclared (first use in this function)
+  219 |   memset(&TxConfig, 0 , sizeof(ETH_TxPacketConfig));
+      |                                ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:220:11: error: request for member 'Attributes' in something not a structure or union
+  220 |   TxConfig.Attributes = ETH_TX_PACKETS_FEATURES_CSUM | ETH_TX_PACKETS_FEATURES_CRCPAD;
+      |           ^
+../Core/Src/main.c:220:25: error: 'ETH_TX_PACKETS_FEATURES_CSUM' undeclared (first use in this function)
+  220 |   TxConfig.Attributes = ETH_TX_PACKETS_FEATURES_CSUM | ETH_TX_PACKETS_FEATURES_CRCPAD;
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:220:56: error: 'ETH_TX_PACKETS_FEATURES_CRCPAD' undeclared (first use in this function)
+  220 |   TxConfig.Attributes = ETH_TX_PACKETS_FEATURES_CSUM | ETH_TX_PACKETS_FEATURES_CRCPAD;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:221:11: error: request for member 'ChecksumCtrl' in something not a structure or union
+  221 |   TxConfig.ChecksumCtrl = ETH_CHECKSUM_IPHDR_PAYLOAD_INSERT_PHDR_CALC;
+      |           ^
+../Core/Src/main.c:221:27: error: 'ETH_CHECKSUM_IPHDR_PAYLOAD_INSERT_PHDR_CALC' undeclared (first use in this function)
+  221 |   TxConfig.ChecksumCtrl = ETH_CHECKSUM_IPHDR_PAYLOAD_INSERT_PHDR_CALC;
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:222:11: error: request for member 'CRCPadCtrl' in something not a structure or union
+  222 |   TxConfig.CRCPadCtrl = ETH_CRC_PAD_INSERT;
+      |           ^
+../Core/Src/main.c:222:25: error: 'ETH_CRC_PAD_INSERT' undeclared (first use in this function)
+  222 |   TxConfig.CRCPadCtrl = ETH_CRC_PAD_INSERT;
+      |                         ^~~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j20 all" terminated with exit code 2. Build might be incomplete.
+
+16:40:18 Build Failed. 16 errors, 0 warnings. (took 309ms)
+
